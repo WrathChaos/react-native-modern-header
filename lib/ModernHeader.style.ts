@@ -1,7 +1,7 @@
-import { ViewStyle, StyleSheet } from "react-native";
+import { ViewStyle, TextStyle, StyleSheet } from "react-native";
 
 interface Style {
-  textStyle: ViewStyle;
+  titleStyle: TextStyle;
   leftCompStyle: ViewStyle;
   rightCompStyle: ViewStyle;
 }
@@ -29,7 +29,7 @@ export default StyleSheet.create<Style>({
     right: 16,
     position: "absolute",
   },
-  textStyle: {
+  titleStyle: {
     fontWeight: "800",
   },
 });

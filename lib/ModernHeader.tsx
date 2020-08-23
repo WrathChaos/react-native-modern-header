@@ -1,12 +1,8 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, ViewStyle } from "react-native";
 import Icon from "react-native-dynamic-vector-icons";
-import styles, {
-  _container,
-  _leftCompStyle,
-  _rightCompStyle,
-} from "./ModernHeader.style";
+import styles, { _container } from "./ModernHeader.style";
 
 const hitslopObj = {
   top: 8,
@@ -15,12 +11,34 @@ const hitslopObj = {
   bottom: 8,
 };
 
-const ModernHeader = (props) => {
+interface IProps {
+  title: string;
+  width: number | string;
+  height: number | string;
+  titleStyle: ViewStyle;
+  leftDisable: boolean;
+  leftIconName: string;
+  leftIconType: string;
+  leftIconSize: number;
+  rightDisable: boolean;
+  leftIconColor: string;
+  rightIconName: string;
+  rightIconType: string;
+  rightIconSize: number;
+  rightIconColor: string;
+  leftIconComponent: any;
+  backgroundColor: string;
+  rightIconComponent: any;
+  leftIconOnPress: () => void;
+  rightIconOnPress: () => void;
+}
+
+const ModernHeader = (props: IProps) => {
   const {
-    text,
+    title,
     width,
     height,
-    textStyle,
+    titleStyle,
     leftDisable,
     leftIconName,
     leftIconType,
@@ -37,40 +55,49 @@ const ModernHeader = (props) => {
     leftIconComponent,
     rightIconComponent,
   } = props;
+
+  const renderLeftIconComp = () =>
+    !leftDisable && (
+      <TouchableOpacity
+        style={styles.leftCompStyle}
+        hitSlop={hitslopObj}
+        onPress={leftIconOnPress}
+      >
+        {leftIconComponent || (
+          <Icon
+            name={leftIconName}
+            type={leftIconType}
+            size={leftIconSize}
+            color={leftIconColor}
+          />
+        )}
+      </TouchableOpacity>
+    );
+
+  const renderRightIconComp = () =>
+    !rightDisable && (
+      <TouchableOpacity
+        style={styles.rightCompStyle}
+        onPress={rightIconOnPress}
+      >
+        {rightIconComponent || (
+          <Icon
+            name={rightIconName}
+            type={rightIconType}
+            size={rightIconSize}
+            color={rightIconColor}
+          />
+        )}
+      </TouchableOpacity>
+    );
+
+  const renderTitle = () => <Text style={titleStyle}>{title}</Text>;
+
   return (
     <View style={_container(height, width, backgroundColor)}>
-      {!leftDisable && (
-        <TouchableOpacity
-          style={styles.leftCompStyle}
-          hitSlop={hitslopObj}
-          onPress={leftIconOnPress}
-        >
-          {leftIconComponent || (
-            <Icon
-              name={leftIconName}
-              type={leftIconType}
-              size={leftIconSize}
-              color={leftIconColor}
-            />
-          )}
-        </TouchableOpacity>
-      )}
-      <Text style={textStyle}>{text}</Text>
-      {!rightDisable && (
-        <TouchableOpacity
-          style={styles.rightCompStyle}
-          onPress={rightIconOnPress}
-        >
-          {rightIconComponent || (
-            <Icon
-              name={rightIconName}
-              type={rightIconType}
-              size={rightIconSize}
-              color={rightIconColor}
-            />
-          )}
-        </TouchableOpacity>
-      )}
+      {renderLeftIconComp()}
+      {renderTitle()}
+      {renderRightIconComp()}
     </View>
   );
 };
@@ -78,7 +105,7 @@ const ModernHeader = (props) => {
 ModernHeader.propTypes = {
   left: PropTypes.number,
   right: PropTypes.number,
-  text: PropTypes.string,
+  title: PropTypes.string,
   leftIconName: PropTypes.string,
   leftIconType: PropTypes.string,
   leftIconColor: PropTypes.string,
@@ -99,14 +126,14 @@ ModernHeader.defaultProps = {
   width: "100%",
   leftIconSize: 25,
   rightIconSize: 25,
-  text: "Header Title",
+  title: "Header Title",
   rightIconName: "heart",
   rightIconType: "Entypo",
   backgroundColor: "#fff",
   leftIconType: "Ionicons",
   leftIconColor: "#bbbabe",
   rightIconColor: "#23c4c1",
-  textStyle: styles.textStyle,
+  titleStyle: styles.titleStyle,
   leftIconName: "ios-arrow-back",
 };
 
