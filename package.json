@@ -1,6 +1,6 @@
 {
   "name": "react-native-modern-header",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Fully customizable Modern Header View for React Native",
   "main": "./build/dist/ModernHeader.js",
   "repository": "git@github.com:WrathChaos/react-native-modern-header.git",
