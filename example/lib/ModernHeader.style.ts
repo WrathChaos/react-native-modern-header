@@ -1,35 +1,27 @@
-import { ViewStyle, TextStyle, StyleSheet } from "react-native";
+import { ViewStyle, StyleSheet } from "react-native";
 
 interface Style {
-  titleStyle: TextStyle;
-  leftCompStyle: ViewStyle;
-  rightCompStyle: ViewStyle;
+  container: ViewStyle;
+  leftComponentStyle: ViewStyle;
+  rightComponentStyle: ViewStyle;
 }
 
-export const _container = (
-  height: number | string,
-  width: number | string,
-  backgroundColor: string,
-): ViewStyle => ({
-  width,
-  height,
-  top: 0,
-  backgroundColor,
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "center",
-});
-
 export default StyleSheet.create<Style>({
-  leftCompStyle: {
+  container: {
+    top: 0,
+    height: 70,
+    width: "100%",
+    backgroundColor: "#fff",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  leftComponentStyle: {
     left: 16,
     position: "absolute",
   },
-  rightCompStyle: {
+  rightComponentStyle: {
     right: 16,
     position: "absolute",
-  },
-  titleStyle: {
-    fontWeight: "800",
   },
 });

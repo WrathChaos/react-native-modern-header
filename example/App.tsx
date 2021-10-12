@@ -8,7 +8,7 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <ModernHeader />
+        <ModernHeader title="Header" />
       </SafeAreaView>
     </>
   );
