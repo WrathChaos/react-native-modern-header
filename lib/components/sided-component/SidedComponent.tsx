@@ -21,7 +21,7 @@ export interface ISidedComponentProps {
   style?: CustomStyleProp;
   TouchableComponent?: any;
   imageSource?: ImageSourcePropType;
-  customComponent?: React.ReactDOM;
+  customComponent?: React.ReactElement;
   imageStyle?: CustomImageStyleProp;
   onPress?: () => void;
 }

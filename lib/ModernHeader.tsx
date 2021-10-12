@@ -17,8 +17,8 @@ interface IModernHeaderProps extends ITitleProps, ISidedComponentProps {
   rightImageSource?: any;
   leftComponentDisable?: boolean;
   rightComponentDisable?: boolean;
-  leftCustomComponent?: React.ReactDOM;
-  rightCustomComponent?: React.ReactDOM;
+  leftCustomComponent?: React.ReactElement;
+  rightCustomComponent?: React.ReactElement;
   leftComponentStyle?: CustomStyleProp;
   rightComponentStyle?: CustomStyleProp;
   onLeftPress?: () => void;
