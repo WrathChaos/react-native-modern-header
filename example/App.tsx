@@ -1,7 +1,7 @@
 import React from "react";
 import { StatusBar, SafeAreaView } from "react-native";
 // import ModernHeader from "react-native-modern-header";
-import ModernHeader from "./lib/ModernHeader";
+import ModernHeader from "./build/dist/ModernHeader";
 
 const App = () => {
   return (
