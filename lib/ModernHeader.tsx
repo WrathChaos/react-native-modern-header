@@ -11,7 +11,7 @@ import SidedComponent, {
 
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 
-interface IModernHeaderProps extends ITitleProps, ISidedComponentProps {
+export interface IModernHeaderProps extends ITitleProps, ISidedComponentProps {
   style?: CustomStyleProp;
   leftImageSource?: any;
   rightImageSource?: any;
